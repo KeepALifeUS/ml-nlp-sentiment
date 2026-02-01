@@ -1,92 +1,90 @@
-# 🧠 Enterprise NLP Sentiment Analysis for Crypto Trading
+# Enterprise NLP Sentiment Analysis for Crypto Trading
 
-**ml-nlp-sentiment** - производственно-готовая система анализа настроений для криптовалютного трейдинга с полной интеграцией Context7 паттернов и enterprise-grade возможностями.
+**ml-nlp-sentiment** - Production-ready sentiment analysis system for cryptocurrency trading with full enterprise pattern integration and enterprise-grade capabilities.
 
-## 🚀 Ключевые возможности
+## Key Features
 
-### 🤖 Transformer модели
+### Transformer Models
 
-- **BERT Sentiment**: Базовая модель для общего анализа настроений
-- **FinBERT**: Специализированная модель для финансовых текстов
-- **RoBERTa**: Робустная модель с улучшенной социальной медиа поддержкой
-- **DistilBERT**: Быстрая легковесная модель для мобильных устройств
-- **CryptoBERT**: Кастомная модель, обученная на криптовалютных данных
-- **Ensemble Model**: Ансамбль всех моделей для максимальной точности
+- **BERT Sentiment**: Base model for general sentiment analysis
+- **FinBERT**: Specialized model for financial texts
+- **RoBERTa**: Robust model with improved social media support
+- **DistilBERT**: Fast lightweight model for mobile devices
+- **CryptoBERT**: Custom model trained on cryptocurrency data
+- **Ensemble Model**: Ensemble of all models for maximum accuracy
 
-### 🧹 Продвинутая предобработка
+### Advanced Preprocessing
 
-- Crypto-специфичная нормализация ($BTC, #Bitcoin, и т.д.)
-- Обработка эмодзи с извлечением эмоций
-- Нормализация сленга и аббревиатур
-- Извлечение финансовых сущностей
-- Многоязычная поддержка с переводом
+- Crypto-specific normalization ($BTC, #Bitcoin, etc.)
+- Emoji processing with emotion extraction
+- Slang and abbreviation normalization
+- Financial entity extraction
+- Multilingual support with translation
 
-### ⚡ Enterprise возможности
+### Enterprise Capabilities
 
-- Batch и streaming инференс
-- Модель versioning и registry
-- A/B тестирование моделей
+- Batch and streaming inference
+- Model versioning and registry
+- A/B model testing
 - Performance monitoring
 - Auto-scaling inference
 - Distributed training
 
-### 🛡️ Безопасность и надёжность
+### Security and Reliability
 
 - Comprehensive input validation
-- XSS и injection защита
+- XSS and injection protection
 - Sensitive data detection
 - Rate limiting
 - Audit logging
 
-## 📦 Установка
+## Installation
 
 ```bash
-# Основная установка
+# Basic installation
 pip install ml-nlp-sentiment
 
-# С GPU поддержкой
+# With GPU support
 pip install ml-nlp-sentiment[gpu]
 
-# С distributed возможностями
+# With distributed capabilities
 pip install ml-nlp-sentiment[distributed]
 
-# Полная установка
+# Full installation
 pip install ml-nlp-sentiment[dev,gpu,distributed]
-
 ```
 
-## 🎯 Быстрый старт
+## Quick Start
 
-### Базовое использование
+### Basic Usage
 
 ```python
 from ml_nlp_sentiment import BERTSentiment, CryptoBERT, EnsembleModel
 
-# Простой анализ настроений
+# Simple sentiment analysis
 model = BERTSentiment()
 result = model.predict("Bitcoin is going to the moon! 🚀")
 print(f"Sentiment: {result.sentiment_label}, Confidence: {result.confidence}")
 
-# Crypto-специфичный анализ
+# Crypto-specific analysis
 crypto_model = CryptoBERT()
 result = crypto_model.predict_crypto(
     "Just bought more $BTC. HODL! 💎🙌",
     assets=["BTC"]
 )
 print(f"Price prediction: {result['price_movement']['label']}")
-
 ```
 
-### Ensemble анализ
+### Ensemble Analysis
 
 ```python
-# Создание ensemble модели
+# Create ensemble model
 ensemble = EnsembleModel(
     model_types=["bert", "finbert", "roberta", "crypto_bert"],
     ensemble_strategy="weighted_voting"
 )
 
-# Comprehensive анализ
+# Comprehensive analysis
 results = ensemble.predict_ensemble([
     "Bitcoin looking bullish! Time to buy more 📈",
     "Market is crashing, might be a good time to DCA",
@@ -96,15 +94,14 @@ results = ensemble.predict_ensemble([
 for result in results:
     print(f"Ensemble sentiment: {result.ensemble_sentiment}")
     print(f"Model agreement: {result.ensemble_confidence}")
-
 ```
 
-### API сервер
+### API Server
 
 ```python
 from ml_nlp_sentiment.api import SentimentAPI
 
-# Запуск REST API
+# Start REST API
 api = SentimentAPI(
     models={"ensemble": ensemble},
     enable_rate_limiting=True,
@@ -112,46 +109,43 @@ api = SentimentAPI(
 )
 
 api.run(host="0.0.0.0", port=8000)
-
 ```
 
-### Streaming обработка
+### Streaming Processing
 
 ```python
 from ml_nlp_sentiment.inference import StreamingPredictor
 
-# Настройка streaming предиктора
+# Configure streaming predictor
 predictor = StreamingPredictor(
     model=ensemble,
     batch_size=32,
     max_latency_ms=100
 )
 
-# Обработка в реальном времени
+# Real-time processing
 async def process_stream():
     async for batch_results in predictor.predict_stream(text_stream):
         for text, result in batch_results:
             print(f"Text: {text[:50]}...")
             print(f"Sentiment: {result.ensemble_sentiment}")
-
 ```
 
-## 🏗️ Архитектура системы
+## System Architecture
 
-### 📁 Структура проекта
+### Project Structure
 
 ```
-
 ml-nlp-sentiment/
 ├── src/
-│   ├── models/              # Transformer модели
+│   ├── models/              # Transformer models
 │   │   ├── bert_sentiment.py
 │   │   ├── finbert_model.py
 │   │   ├── roberta_sentiment.py
 │   │   ├── distilbert_model.py
 │   │   ├── crypto_bert.py
 │   │   └── ensemble_model.py
-│   ├── preprocessing/       # Предобработка текста
+│   ├── preprocessing/       # Text preprocessing
 │   │   ├── text_cleaner.py
 │   │   ├── tokenizer.py
 │   │   ├── emoji_handler.py
@@ -172,30 +166,29 @@ ml-nlp-sentiment/
 │   │   ├── lime_explainer.py
 │   │   ├── shap_explainer.py
 │   │   └── attention_viz.py
-│   └── utils/             # Утилиты
+│   └── utils/             # Utilities
 │       ├── config.py
 │       ├── logger.py
 │       └── model_registry.py
-└── tests/                 # Тесты
-
+└── tests/                 # Tests
 ```
 
-### 🔄 Pipeline архитектура
+### Pipeline Architecture
 
 ```python
-# Полный pipeline
+# Full pipeline
 from ml_nlp_sentiment import (
     TextCleaner, CryptoTokenizer, CryptoBERT,
     EnsembleModel, SHAPExplainer
 )
 
-# Настройка компонентов
+# Configure components
 cleaner = TextCleaner(crypto_optimized=True)
 tokenizer = CryptoTokenizer()
 model = EnsembleModel()
 explainer = SHAPExplainer()
 
-# Обработка
+# Processing
 text = "Just bought $BTC at the dip! 💰"
 cleaned_text = cleaner.clean(text)
 tokens = tokenizer.tokenize(cleaned_text)
@@ -204,12 +197,11 @@ explanation = explainer.explain(cleaned_text, result)
 
 print(f"Sentiment: {result.ensemble_sentiment}")
 print(f"Key features: {explanation.top_features}")
-
 ```
 
-## 🎛️ Конфигурация
+## Configuration
 
-### YAML конфигурация
+### YAML Configuration
 
 ```yaml
 # config.yaml
@@ -256,13 +248,12 @@ redis:
   host: 'localhost'
   database: 0
   max_connections: 100
-
 ```
 
-### Environment переменные
+### Environment Variables
 
 ```bash
-# .env файл
+# .env file
 ENVIRONMENT=production
 DEBUG=false
 
@@ -286,14 +277,13 @@ JWT_SECRET_KEY=your_jwt_secret_here
 # Monitoring
 MONITORING_ENABLED=true
 METRICS_PORT=9090
-
 ```
 
-## 📊 Производительность и метрики
+## Performance and Metrics
 
-### Benchmark результаты
+### Benchmark Results
 
-| Модель        | Accuracy | F1-Score | Latency (ms) | Memory (MB) |
+| Model         | Accuracy | F1-Score | Latency (ms) | Memory (MB) |
 | ------------- | -------- | -------- | ------------ | ----------- |
 | BERTSentiment | 0.89     | 0.87     | 45           | 512         |
 | FinBERT       | 0.92     | 0.91     | 50           | 520         |
@@ -302,12 +292,12 @@ METRICS_PORT=9090
 | CryptoBERT    | 0.94     | 0.93     | 52           | 540         |
 | Ensemble      | 0.96     | 0.95     | 180          | 2048        |
 
-### Throughput тестирование
+### Throughput Testing
 
 ```python
 from ml_nlp_sentiment.evaluation import Benchmark
 
-# Запуск benchmark
+# Run benchmark
 benchmark = Benchmark()
 results = benchmark.run_throughput_test(
     model=ensemble,
@@ -317,19 +307,18 @@ results = benchmark.run_throughput_test(
 
 print(f"Max throughput: {results.max_throughput} texts/sec")
 print(f"Optimal batch size: {results.optimal_batch_size}")
-
 ```
 
-## 🔍 Explainability и интерпретация
+## Explainability and Interpretation
 
-### SHAP анализ
+### SHAP Analysis
 
 ```python
 from ml_nlp_sentiment.explainability import SHAPExplainer
 
 explainer = SHAPExplainer(model=crypto_model)
 
-# Объяснение предсказания
+# Explain prediction
 text = "Bitcoin is pumping hard! Time to buy more $BTC 🚀"
 explanation = explainer.explain(text)
 
@@ -337,13 +326,12 @@ print("Feature importance:")
 for feature, importance in explanation.feature_importance:
     print(f"  {feature}: {importance:.3f}")
 
-# Визуализация
+# Visualization
 explanation.plot_waterfall()
 explanation.plot_force_plot()
-
 ```
 
-### LIME анализ
+### LIME Analysis
 
 ```python
 from ml_nlp_sentiment.explainability import LIMEExplainer
@@ -351,12 +339,11 @@ from ml_nlp_sentiment.explainability import LIMEExplainer
 lime = LIMEExplainer(model=ensemble)
 explanation = lime.explain_instance(text, num_features=10)
 
-# HTML визуализация
+# HTML visualization
 explanation.save_to_file('explanation.html')
-
 ```
 
-### Attention визуализация
+### Attention Visualization
 
 ```python
 from ml_nlp_sentiment.explainability import AttentionVisualizer
@@ -364,17 +351,16 @@ from ml_nlp_sentiment.explainability import AttentionVisualizer
 viz = AttentionVisualizer(model=bert_model)
 attention_map = viz.visualize_attention(
     text="$BTC looking bullish! 📈 Time to accumulate",
-    layer=11,  # Последний слой
-    head=0     # Первая attention head
+    layer=11,  # Last layer
+    head=0     # First attention head
 )
 
 viz.plot_attention_heatmap(attention_map)
-
 ```
 
-## 🚀 Deployment и масштабирование
+## Deployment and Scaling
 
-### Docker deployment
+### Docker Deployment
 
 ```dockerfile
 FROM python:3.11-slim
@@ -387,10 +373,9 @@ COPY . .
 EXPOSE 8000
 
 CMD ["python", "-m", "ml_nlp_sentiment.api", "--host", "0.0.0.0", "--port", "8000"]
-
 ```
 
-### Kubernetes deployment
+### Kubernetes Deployment
 
 ```yaml
 apiVersion: apps/v1
@@ -422,10 +407,9 @@ spec:
             limits:
               memory: '4Gi'
               cpu: '2'
-
 ```
 
-### Load balancing с NGINX
+### Load Balancing with NGINX
 
 ```nginx
 upstream sentiment_api {
@@ -448,73 +432,70 @@ server {
         proxy_pass http://sentiment_api/health;
     }
 }
-
 ```
 
-## 🔧 Расширение системы
+## System Extension
 
-### Кастомные модели
+### Custom Models
 
 ```python
 from ml_nlp_sentiment.models import BERTSentiment
 
 class CustomCryptoModel(BERTSentiment):
-    """Кастомная модель для специфичных случаев"""
+    """Custom model for specific cases"""
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # Дополнительная инициализация
+        # Additional initialization
         self.setup_custom_components()
 
     def setup_custom_components(self):
-        """Настройка кастомных компонентов"""
-        # Добавление custom layers
+        """Setup custom components"""
+        # Add custom layers
         self.custom_layer = nn.Linear(768, 256)
 
     def predict_custom(self, text: str) -> dict:
-        """Кастомная предсказательная логика"""
-        # Ваша логика здесь
+        """Custom prediction logic"""
+        # Your logic here
         pass
-
 ```
 
-### Кастомные preprocessors
+### Custom Preprocessors
 
 ```python
 from ml_nlp_sentiment.preprocessing import TextCleaner
 
 class DeFiTextCleaner(TextCleaner):
-    """Специальный cleaner для DeFi текстов"""
+    """Special cleaner for DeFi texts"""
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        # DeFi-специфичные паттерны
+        # DeFi-specific patterns
         self.defi_patterns = {
             "yield_farming": r"\b(?:yield farm|liquidity mining|farming)\b",
             "defi_protocols": r"\b(?:uniswap|aave|compound|makerdao)\b",
         }
 
     def clean(self, text: str) -> str:
-        """DeFi-специфичная очистка"""
+        """DeFi-specific cleaning"""
         cleaned = super().clean(text)
 
-        # Нормализация DeFi терминов
+        # Normalize DeFi terms
         for term_type, pattern in self.defi_patterns.items():
             cleaned = re.sub(pattern, f"[{term_type.upper()}]", cleaned, flags=re.IGNORECASE)
 
         return cleaned
-
 ```
 
-## 📈 Мониторинг и метрики
+## Monitoring and Metrics
 
-### Prometheus метрики
+### Prometheus Metrics
 
 ```python
 from prometheus_client import Counter, Histogram, Gauge
 
-# Настройка метрик
+# Configure metrics
 prediction_counter = Counter(
     'sentiment_predictions_total',
     'Total sentiment predictions',
@@ -532,7 +513,7 @@ model_accuracy = Gauge(
     ['model']
 )
 
-# В коде модели
+# In model code
 @prediction_latency.time()
 def predict(self, text):
     result = super().predict(text)
@@ -543,10 +524,9 @@ def predict(self, text):
     ).inc()
 
     return result
-
 ```
 
-### Grafana dashboard
+### Grafana Dashboard
 
 ```json
 {
@@ -574,12 +554,11 @@ def predict(self, text):
     ]
   }
 }
-
 ```
 
-## 🧪 Тестирование
+## Testing
 
-### Unit тесты
+### Unit Tests
 
 ```python
 import pytest
@@ -594,7 +573,7 @@ def crypto_model():
     return CryptoBERT()
 
 def test_basic_sentiment(bert_model):
-    """Тест базового анализа настроений"""
+    """Test basic sentiment analysis"""
     result = bert_model.predict("I love Bitcoin!")
 
     assert result.predicted_class in [0, 1, 2]
@@ -602,7 +581,7 @@ def test_basic_sentiment(bert_model):
     assert result.sentiment_label in ["negative", "neutral", "positive"]
 
 def test_crypto_features(crypto_model):
-    """Тест crypto-специфичных функций"""
+    """Test crypto-specific features"""
     text = "$BTC is going to the moon! 🚀"
     result = crypto_model.predict_crypto(text)
 
@@ -612,7 +591,7 @@ def test_crypto_features(crypto_model):
 
 @pytest.mark.asyncio
 async def test_batch_prediction(bert_model):
-    """Тест batch предсказаний"""
+    """Test batch predictions"""
     texts = [
         "Bitcoin is great!",
         "I hate crypto",
@@ -623,15 +602,14 @@ async def test_batch_prediction(bert_model):
 
     assert len(results) == 3
     assert all(hasattr(r, "confidence") for r in results)
-
 ```
 
-### Integration тесты
+### Integration Tests
 
 ```python
 @pytest.mark.integration
 def test_full_pipeline():
-    """Тест полного pipeline"""
+    """Test full pipeline"""
     from ml_nlp_sentiment import TextCleaner, EnsembleModel
 
     cleaner = TextCleaner()
@@ -646,7 +624,7 @@ def test_full_pipeline():
 
 @pytest.mark.integration
 def test_api_endpoints():
-    """Тест API endpoints"""
+    """Test API endpoints"""
     from fastapi.testclient import TestClient
     from ml_nlp_sentiment.api import app
 
@@ -661,15 +639,14 @@ def test_api_endpoints():
     data = response.json()
     assert "sentiment" in data
     assert "confidence" in data
-
 ```
 
-### Performance тесты
+### Performance Tests
 
 ```python
 @pytest.mark.performance
 def test_latency_requirements():
-    """Тест требований по latency"""
+    """Test latency requirements"""
     import time
     from ml_nlp_sentiment import DistilBERTModel
 
@@ -685,12 +662,12 @@ def test_latency_requirements():
         model.predict(text)
     avg_latency = (time.time() - start_time) / 100
 
-    # DistilBERT должен быть быстрее 50ms
+    # DistilBERT should be faster than 50ms
     assert avg_latency < 0.05
 
 @pytest.mark.performance
 def test_throughput_requirements():
-    """Тест требований по throughput"""
+    """Test throughput requirements"""
     from ml_nlp_sentiment import EnsembleModel
 
     model = EnsembleModel(parallel_inference=True)
@@ -702,117 +679,109 @@ def test_throughput_requirements():
 
     throughput = len(texts) / duration
 
-    # Ensemble должен обрабатывать > 50 текстов/сек
+    # Ensemble should process > 50 texts/sec
     assert throughput > 50
-
 ```
 
-## 📚 Документация
+## Documentation
 
-### API документация
+### API Documentation
 
-Полная API документация доступна по адресу `/docs` при запуске сервера:
+Full API documentation available at `/docs` when running the server:
 
 ```bash
 python -m ml_nlp_sentiment.api
-# Открыть http://localhost:8000/docs
-
+# Open http://localhost:8000/docs
 ```
 
-### Jupyter примеры
+### Jupyter Examples
 
 ```python
 # notebooks/crypto_sentiment_analysis.ipynb
 import pandas as pd
 from ml_nlp_sentiment import CryptoBERT, SHAPExplainer
 
-# Загрузка данных
+# Load data
 df = pd.read_csv("crypto_tweets.csv")
 
-# Анализ настроений
+# Sentiment analysis
 model = CryptoBERT()
 df["sentiment"] = df["text"].apply(lambda x: model.predict_crypto(x)["sentiment"]["label"])
 
-# Визуализация результатов
+# Visualize results
 df.groupby(["date", "sentiment"]).size().unstack().plot(kind="bar", stacked=True)
 
-# Explainability анализ
+# Explainability analysis
 explainer = SHAPExplainer(model)
 sample_text = df["text"].iloc[0]
 explanation = explainer.explain(sample_text)
 explanation.plot_waterfall()
-
 ```
 
-## 🤝 Контрибьюшн
+## Contributing
 
-### Настройка dev environment
+### Dev Environment Setup
 
 ```bash
-# Клонирование репозитория
+# Clone repository
 git clone https://github.com/ml-framework/ml-nlp-sentiment.git
 cd ml-nlp-sentiment
 
-# Создание виртуального окружения
+# Create virtual environment
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
-# или
+# or
 venv\Scripts\activate     # Windows
 
-# Установка в dev режиме
+# Install in dev mode
 pip install -e .[dev]
 
-# Установка pre-commit hooks
+# Install pre-commit hooks
 pre-commit install
-
 ```
 
-### Стандарты кода
+### Code Standards
 
 ```bash
-# Форматирование кода
+# Code formatting
 black src/ tests/
 isort src/ tests/
 
-# Линтинг
+# Linting
 flake8 src/ tests/
 mypy src/ tests/
 
-# Запуск тестов
+# Run tests
 pytest tests/ -v --cov=src/
 
-# Проверка безопасности
+# Security check
 bandit -r src/
-
 ```
 
-### Pull Request процесс
+### Pull Request Process
 
-1. Fork репозитория
-2. Создание feature ветки: `git checkout -b feature/amazing-feature`
-3. Коммит изменений: `git commit -m 'Add amazing feature'`
-4. Push в ветку: `git push origin feature/amazing-feature`
-5. Открытие Pull Request
+1. Fork the repository
+2. Create feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open Pull Request
 
-## 📄 Лицензия
+## License
 
-MIT License. См. [LICENSE](LICENSE) файл для деталей.
+MIT License. See [LICENSE](LICENSE) file for details.
 
-## 🆘 Поддержка
+## Support
 
-- 📧 Email: <team@ml-framework.dev>
-- 💬 Discord: [ML-Framework Community](https://discord.gg/ml-framework)
-- 🐛 Issues: [GitHub Issues](https://github.com/ml-framework/ml-nlp-sentiment/issues)
-- 📖 Wiki: [Documentation Wiki](https://github.com/ml-framework/ml-nlp-sentiment/wiki)
+- Issues: [GitHub Issues](https://github.com/ml-framework/ml-nlp-sentiment/issues)
+- Wiki: [Documentation Wiki](https://github.com/ml-framework/ml-nlp-sentiment/wiki)
 
-## 🙏 Благодарности
+## Acknowledgments
 
-- Hugging Face за transformer models
-- OpenAI за inspiration
-- Crypto community за feedback и тестирование
-- Context7 team за architectural patterns
+- Hugging Face for transformer models
+- OpenAI for inspiration
+- Crypto community for feedback and testing
 
 ---
 
-**Crypto Trading Bot v5.0** - Enterprise NLP Sentiment Analysis  
-Made with ❤️ by ML-Framework Team
+**Enterprise NLP Sentiment Analysis**
+Made for production crypto trading applications
