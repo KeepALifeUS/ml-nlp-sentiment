@@ -2,7 +2,7 @@
 Utilities Module for NLP Sentiment Analysis
 
 Enterprise-grade utility functions and classes for the NLP sentiment
-analysis system with Context7 integration patterns.
+analysis system with enterprise integration patterns.
 
 Components:
 - Config: Configuration management

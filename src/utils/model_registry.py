@@ -1,7 +1,7 @@
 """
 Model Registry for NLP Sentiment Analysis
 
-Enterprise model versioning and registry system with Context7 patterns
+Enterprise model versioning and registry system with enterprise patterns
 for managing model lifecycle, versions, and deployment.
 
 Author: ML-Framework Team
@@ -198,7 +198,7 @@ class ModelStorage:
 
 class ModelRegistry:
     """
-    Enterprise Model Registry with Context7 Integration
+    Enterprise Model Registry with enterprise integration
     
     Features:
     - Model versioning and lifecycle management

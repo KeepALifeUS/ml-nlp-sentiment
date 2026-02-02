@@ -1,7 +1,7 @@
 """
 Performance Profiler for NLP Sentiment Analysis
 
-Enterprise-grade performance monitoring and profiling system with Context7
+Enterprise-grade performance monitoring and profiling system with 
 patterns for comprehensive system observability and optimization.
 
 Author: ML-Framework Team
@@ -317,7 +317,7 @@ class MemoryProfiler:
 
 class Profiler:
     """
-    Enterprise Performance Profiler with Context7 Integration
+    Enterprise Performance Profiler with enterprise integration
     
     Features:
     - Operation timing and profiling

@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ml-nlp-sentiment"
 version = "1.0.0"
-description = "Enterprise-grade NLP Sentiment Analysis for Crypto Trading - Context7 Integration"
+description = "Enterprise-grade NLP Sentiment Analysis for Crypto Trading - enterprise integration"
 readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
@@ -14,7 +14,7 @@ authors = [
 ]
 keywords = [
     "nlp", "sentiment", "crypto", "trading", "bert", "transformers",
-    "machine-learning", "context7", "enterprise", "fintech"
+    "machine-learning", "ml-framework", "enterprise", "fintech"
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",

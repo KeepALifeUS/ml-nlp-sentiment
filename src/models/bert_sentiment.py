@@ -1,7 +1,7 @@
 """
 BERT Sentiment Analysis Model for Crypto Text
 
-Enterprise-grade BERT implementation with Context7 patterns for cryptocurrency
+Enterprise-grade BERT implementation with enterprise patterns for cryptocurrency
 sentiment analysis. Optimized for financial text with advanced features.
 
 Author: ML-Framework Team
@@ -28,7 +28,7 @@ import json
 import time
 from contextlib import contextmanager
 
-# Context7 imports
+#  imports
 from ..utils.config import Config
 from ..utils.logger import Logger
 from ..utils.profiler import Profiler
@@ -68,7 +68,7 @@ class BERTSentiment(nn.Module):
     """
     BERT-based Sentiment Analysis Model for Crypto Text
     
-    Реализует enterprise-grade BERT модель с Context7 паттернами:
+    Реализует enterprise-grade BERT модель with enterprise patterns:
     - Model versioning и registry integration
     - Performance monitoring и profiling
     - Advanced dropout и regularization
@@ -146,7 +146,7 @@ class BERTSentiment(nn.Module):
             "version": "1.0.0",
             "num_parameters": self._count_parameters(),
             "crypto_optimized": True,
-            "context7_enabled": True,
+            "enterprise_enabled": True,
         }
         
         self.to(self.device)
@@ -458,12 +458,12 @@ def create_bert_sentiment(
     return model
 
 
-# Context7 Integration для enterprise deployment
-class BERTSentimentContext7(BERTSentiment):
+# Enterprise integration for production deployment
+class BERTSentimentEnterprise(BERTSentiment):
     """
-    BERT Sentiment с полной Context7 integration
-    
-    Дополнительные enterprise features:
+    BERT Sentiment with full enterprise integration
+
+    Additional enterprise features:
     - A/B testing framework
     - Model monitoring и alerting  
     - Distributed training support
@@ -474,22 +474,22 @@ class BERTSentimentContext7(BERTSentiment):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        # Context7 specific initialization
+        # specific initialization
         self._setup_monitoring()
         self._setup_caching()
         self._setup_ab_testing()
     
     def _setup_monitoring(self):
         """Setup performance monitoring"""
-        # Implementation would integrate with Context7 monitoring
+        # Implementation would integrate with monitoring
         pass
     
     def _setup_caching(self):
         """Setup intelligent caching"""
-        # Implementation would integrate with Context7 caching layer  
+        # Implementation would integrate with caching layer  
         pass
     
     def _setup_ab_testing(self):
         """Setup A/B testing framework"""
-        # Implementation would integrate with Context7 A/B testing
+        # Implementation would integrate with A/B testing
         pass

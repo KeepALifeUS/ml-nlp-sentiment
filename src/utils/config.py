@@ -1,7 +1,7 @@
 """
 Configuration Management for NLP Sentiment Analysis
 
-Enterprise-grade configuration system with Context7 patterns for
+Enterprise-grade configuration system with enterprise patterns for
 managing application settings, model parameters, and deployment configs.
 
 Author: ML-Framework Team
@@ -187,7 +187,7 @@ class LoggingConfig:
 
 class Config(BaseSettings):
     """
-    Main configuration class with Context7 enterprise patterns
+    Main configuration class with enterprise patterns
     
     Features:
     - Environment-based configuration

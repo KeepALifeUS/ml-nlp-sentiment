@@ -2,7 +2,7 @@
 Transformer Models Module for Crypto Sentiment Analysis
 
 Comprehensive collection of transformer-based sentiment analysis models
-optimized for cryptocurrency text analysis with Context7 enterprise patterns.
+optimized for cryptocurrency text analysis with enterprise patterns.
 
 Models:
 - BERTSentiment: Standard BERT for general sentiment analysis

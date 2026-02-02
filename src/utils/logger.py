@@ -1,7 +1,7 @@
 """
 Enterprise Logging System for NLP Sentiment Analysis
 
-Structured logging with Context7 patterns for comprehensive monitoring,
+Structured logging with enterprise patterns for comprehensive monitoring,
 debugging, and observability in cryptocurrency sentiment analysis.
 
 Author: ML-Framework Team
@@ -22,7 +22,7 @@ import asyncio
 from functools import wraps
 from contextlib import contextmanager
 
-# Context7 observability imports
+# observability imports
 try:
     from opentelemetry import trace
     from opentelemetry.trace import Status, StatusCode
@@ -191,7 +191,7 @@ class AsyncLogHandler(logging.Handler):
 
 class Logger:
     """
-    Enterprise Logger with Context7 Integration
+    Enterprise Logger with enterprise integration
     
     Features:
     - Structured JSON logging

@@ -1,5 +1,5 @@
 """
-Enterprise NLP Sentiment Analysis for Crypto Trading - Context7 Integration
+Enterprise NLP Sentiment Analysis for Crypto Trading - enterprise integration
 
 Comprehensive sentiment analysis system optimized for cryptocurrency text analysis,
 featuring transformer models, multi-language support, and real-time inference.
@@ -73,7 +73,7 @@ from .utils import (
     Profiler,
 )
 
-# Enterprise Context7 patterns
+# Enterprise enterprise patterns
 from .explainability import (
     AttentionVisualizer,
     LIMEExplainer,
@@ -152,8 +152,8 @@ __all__ = [
 # Version info
 version_info = tuple(map(int, __version__.split('.')))
 
-# Context7 Enterprise Metadata
-CONTEXT7_METADATA = {
+# enterprise Metadata
+ENTERPRISE_METADATA = {
     "component_type": "ml_nlp_sentiment",
     "architecture_pattern": "microservice_ml_pipeline",
     "scalability_tier": "enterprise",
@@ -176,7 +176,7 @@ def health_check() -> dict:
         "python_version": sys.version,
         "torch_version": torch.__version__,
         "cuda_available": torch.cuda.is_available(),
-        "context7_integration": "enabled",
+        "_integration": "enabled",
         "enterprise_features": "active",
     }
 

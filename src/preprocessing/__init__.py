@@ -2,7 +2,7 @@
 Preprocessing Module for Crypto NLP Sentiment Analysis
 
 Comprehensive text preprocessing pipeline optimized for cryptocurrency
-and financial text analysis with Context7 enterprise patterns.
+and financial text analysis with enterprise patterns.
 
 Components:
 - TextCleaner: Advanced text cleaning and normalization
