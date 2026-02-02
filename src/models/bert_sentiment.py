@@ -39,7 +39,7 @@ logger = Logger(__name__).get_logger()
 
 @dataclass
 class SentimentOutput:
-    """Структурированный вывод модели sentiment analysis"""
+    """Structured output model sentiment analysis"""
     logits: torch.Tensor
     probabilities: torch.Tensor
     predicted_class: int
@@ -48,7 +48,7 @@ class SentimentOutput:
     model_name: str
     
     def to_dict(self) -> Dict[str, Any]:
-        """Конвертация в словарь для API"""
+        """Conversion in dictionary for API"""
         return {
             "predicted_class": self.predicted_class,
             "confidence": float(self.confidence),
@@ -59,7 +59,7 @@ class SentimentOutput:
         }
     
     def _get_sentiment_label(self) -> str:
-        """Получить текстовую метку sentiment"""
+        """Get text label sentiment"""
         labels = ["negative", "neutral", "positive"]
         return labels[self.predicted_class] if self.predicted_class < len(labels) else "unknown"
 
@@ -68,12 +68,12 @@ class BERTSentiment(nn.Module):
     """
     BERT-based Sentiment Analysis Model for Crypto Text
     
-    Реализует enterprise-grade BERT модель with enterprise patterns:
-    - Model versioning и registry integration
-    - Performance monitoring и profiling
-    - Advanced dropout и regularization
+    Implements enterprise-grade BERT model with enterprise patterns:
+    - Model versioning and registry integration
+    - Performance monitoring and profiling
+    - Advanced dropout and regularization
     - Crypto-specific preprocessing
-    - Batch optimization для high-throughput
+    - Batch optimization for high-throughput
     """
     
     def __init__(
@@ -153,12 +153,12 @@ class BERTSentiment(nn.Module):
         logger.info(f"Initialized BERTSentiment model: {model_name} on {self.device}")
     
     def _count_parameters(self) -> int:
-        """Подсчет количества параметров модели"""
+        """Counting number parameters model"""
         return sum(p.numel() for p in self.parameters() if p.requires_grad)
     
     @contextmanager
     def _performance_context(self, operation: str):
-        """Context manager для отслеживания производительности"""
+        """Context manager for tracking performance"""
         start_time = time.time()
         try:
             yield
@@ -176,7 +176,7 @@ class BERTSentiment(nn.Module):
         **kwargs
     ) -> Union[torch.Tensor, Tuple[torch.Tensor, ...]]:
         """
-        Forward pass через BERT модель
+        Forward pass through BERT model
         
         Args:
             input_ids: Input token IDs [batch_size, seq_len]
@@ -201,7 +201,7 @@ class BERTSentiment(nn.Module):
             # Get pooled output (CLS token)
             pooled_output = outputs.pooler_output
             
-            # Apply layer normalization и dropout
+            # Apply layer normalization and dropout
             pooled_output = self.layer_norm(pooled_output)
             pooled_output = self.dropout(pooled_output)
             
@@ -248,16 +248,16 @@ class BERTSentiment(nn.Module):
         return_confidence: bool = True,
     ) -> Union[SentimentOutput, List[SentimentOutput]]:
         """
-        Предсказание sentiment для текста или списка текстов
+        Prediction sentiment for text or list texts
         
         Args:
-            texts: Текст или список текстов
-            batch_size: Размер батча
-            return_probabilities: Возвращать вероятности
-            return_confidence: Возвращать confidence score
+            texts: Text or list texts
+            batch_size: Size batch
+            return_probabilities: Return probability
+            return_confidence: Return confidence score
             
         Returns:
-            SentimentOutput или список SentimentOutput
+            SentimentOutput or list SentimentOutput
         """
         
         self.eval()
@@ -317,7 +317,7 @@ class BERTSentiment(nn.Module):
         return results[0] if is_single else results
     
     def predict_proba(self, texts: Union[str, List[str]], **kwargs) -> np.ndarray:
-        """Получить вероятности классов"""
+        """Get probability classes"""
         results = self.predict(texts, **kwargs)
         if isinstance(results, list):
             return np.array([r.probabilities.cpu().numpy() for r in results])
@@ -326,7 +326,7 @@ class BERTSentiment(nn.Module):
     
     def preprocess_crypto_text(self, text: str) -> str:
         """
-        Preprocessing текста для crypto-specific features
+        Preprocessing text for crypto-specific features
         
         Args:
             text: Input text
@@ -369,7 +369,7 @@ class BERTSentiment(nn.Module):
         return text
     
     def save_model(self, save_path: Union[str, Path]) -> None:
-        """Сохранить модель и токенизатор"""
+        """Save model and tokenizer"""
         save_path = Path(save_path)
         save_path.mkdir(parents=True, exist_ok=True)
         
@@ -399,7 +399,7 @@ class BERTSentiment(nn.Module):
     
     @classmethod
     def load_model(cls, model_path: Union[str, Path], **kwargs) -> "BERTSentiment":
-        """Загрузить сохраненную модель"""
+        """Load saved model"""
         model_path = Path(model_path)
         
         # Load checkpoint
@@ -413,7 +413,7 @@ class BERTSentiment(nn.Module):
         return model
     
     def get_model_info(self) -> Dict[str, Any]:
-        """Получить информацию о модели"""
+        """Get information about model"""
         return {
             **self.model_metadata,
             "device": str(self.device),
@@ -422,29 +422,29 @@ class BERTSentiment(nn.Module):
         }
     
     def enable_crypto_attention(self) -> None:
-        """Включить crypto-specific attention механизм"""
+        """Enable crypto-specific attention mechanism"""
         self.use_crypto_attention = True
         logger.info("Crypto attention mechanism enabled")
     
     def disable_crypto_attention(self) -> None:
-        """Отключить crypto-specific attention механизм"""
+        """Disable crypto-specific attention mechanism"""
         self.use_crypto_attention = False
         logger.info("Crypto attention mechanism disabled")
 
 
-# Factory function для удобного создания модели
+# Factory function for convenient creation model
 def create_bert_sentiment(
     model_name: str = "bert-base-uncased",
     crypto_optimized: bool = True,
     **kwargs
 ) -> BERTSentiment:
     """
-    Factory function для создания BERT sentiment модели
+    Factory function for creation BERT sentiment model
     
     Args:
-        model_name: Название pretrained модели
-        crypto_optimized: Включить crypto-specific optimizations
-        **kwargs: Дополнительные параметры
+        model_name: Name pretrained model
+        crypto_optimized: Enable crypto-specific optimizations
+        **kwargs: Additional parameters
         
     Returns:
         Configured BERTSentiment model
@@ -465,7 +465,7 @@ class BERTSentimentEnterprise(BERTSentiment):
 
     Additional enterprise features:
     - A/B testing framework
-    - Model monitoring и alerting  
+    - Model monitoring and alerting  
     - Distributed training support
     - Auto-scaling inference
     - Advanced caching strategies

@@ -618,14 +618,14 @@ class FinBERTModel(BERTSentiment):
         return result
 
 
-# Factory function для создания FinBERT модели
+# Factory function for creation FinBERT model
 def create_finbert_model(
     variant: str = "sentiment",
     financial_optimized: bool = True,
     **kwargs
 ) -> FinBERTModel:
     """
-    Factory function для создания FinBERT модели
+    Factory function for creation FinBERT model
     
     Args:
         variant: Model variant (base, large, domain, sentiment, esg)

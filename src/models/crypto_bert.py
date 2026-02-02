@@ -845,7 +845,7 @@ def create_crypto_bert(
     **kwargs
 ) -> CryptoBERT:
     """
-    Factory function для создания CryptoBERT модели
+    Factory function for creation CryptoBERT model
     
     Args:
         variant: Model variant

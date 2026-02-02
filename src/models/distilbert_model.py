@@ -550,7 +550,7 @@ class DistilBERTModel(BERTSentiment):
         }
 
 
-# Factory function для создания DistilBERT модели
+# Factory function for creation DistilBERT model
 def create_distilbert_model(
     variant: str = "base",
     speed_optimized: bool = True,
@@ -558,7 +558,7 @@ def create_distilbert_model(
     **kwargs
 ) -> DistilBERTModel:
     """
-    Factory function для создания DistilBERT модели
+    Factory function for creation DistilBERT model
     
     Args:
         variant: Model variant (base, cased, multilingual, etc.)

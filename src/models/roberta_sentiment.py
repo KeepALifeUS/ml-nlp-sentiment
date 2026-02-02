@@ -615,7 +615,7 @@ class GradientReversalFunction(torch.autograd.Function):
         return -ctx.alpha * grad_output, None
 
 
-# Factory function для создания RoBERTa модели
+# Factory function for creation RoBERTa model
 def create_roberta_sentiment(
     variant: str = "sentiment",
     social_media_optimized: bool = True,
@@ -623,7 +623,7 @@ def create_roberta_sentiment(
     **kwargs
 ) -> RoBERTaSentiment:
     """
-    Factory function для создания RoBERTa sentiment модели
+    Factory function for creation RoBERTa sentiment model
     
     Args:
         variant: Model variant (base, large, sentiment, emotion, etc.)

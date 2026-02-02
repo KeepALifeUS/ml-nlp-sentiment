@@ -166,7 +166,7 @@ ENTERPRISE_METADATA = {
 
 # Package health check
 def health_check() -> dict:
-    """Проверка состояния пакета и зависимостей"""
+    """Validation state package and dependencies"""
     import sys
     import torch
     
