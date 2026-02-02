@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = {text = "MIT"}
 authors = [
-    {name = "CTB3 Team", email = "team@ctb3.dev"}
+    {name = "ML Team", email = "team@example.com"}
 ]
 keywords = [
     "nlp", "sentiment", "crypto", "trading", "bert", "transformers",
@@ -111,10 +111,10 @@ distributed = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ctb3/ml-nlp-sentiment"
+Homepage = "https://github.com/KeepALifeUS"
 Documentation = "https://ml-nlp-sentiment.readthedocs.io/"
-Repository = "https://github.com/ctb3/ml-nlp-sentiment.git"
-Issues = "https://github.com/ctb3/ml-nlp-sentiment/issues"
+Repository = "https://github.com/KeepALifeUS"
+Issues = "https://github.com/KeepALifeUS"
 
 [tool.setuptools.packages.find]
 where = ["src"]
